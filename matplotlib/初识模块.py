@@ -46,7 +46,7 @@ ax.spines['bottom'].set_position(('data', 0))
 ax.yaxis.set_ticks_position('left')
 ax.spines['left'].set_position(('data', 0))
 
-# 图例legend
+# 图例legend：使用图例时与l2 = plt.plot(x, y, label='x^2')中的label相呼应
 plt.legend(loc='upper right')
 # 标注具体某点
 x0 = 0.5
