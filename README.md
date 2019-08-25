@@ -2,41 +2,44 @@
 TensorFlow神经网络，深度学习
 环境：
 
-Anaconda3(numpy+Tensorflow) + Python3.7 + Pycharm2019.1.2
+### Anaconda3(numpy+Tensorflow) + Python3.7 + Pycharm2019.1.2
 
 
-Main technique：
+### Main technique：
 
 
-线性代数、概率和信息论
-欠拟合、过拟合、正则化
-最大似然估计和贝叶斯统计
-随机梯度下降
-监督学习和无监督学习
-深度前馈网络、代价函数和反向传播
+      线性代数、概率和信息论
+      欠拟合、过拟合、正则化
+      最大似然估计和贝叶斯统计
+      随机梯度下降
+      监督学习和无监督学习
+      深度前馈网络、代价函数和反向传播
 
-自适应学习算法
-卷积神经网络
-循环神经网络
-递归神经网络
-深度神经网络和深度堆叠网络
-主成分分析
-softmax回归、决策树和聚类算法
+      自适应学习算法
+      卷积神经网络
+      循环神经网络
+      递归神经网络
+      深度神经网络和深度堆叠网络
+      主成分分析
+      softmax回归、决策树和聚类算法
 
-KNN和SVM
-生成对抗网络和有向生成网络
-机器视觉和图像识别
-自然语言处理
-语音识别和机器翻译
-动态规划
-梯度策略算法
-增强学习（Q-learning）
+      KNN和SVM
+      生成对抗网络和有向生成网络
+      机器视觉和图像识别
+      自然语言处理
+      语音识别和机器翻译
+      动态规划
+      梯度策略算法
+      增强学习（Q-learning）
 
       Application field：
       机器视觉
       语音处理
       语言信号处理
-      
+
+### 学习网址：
+      https://www.cnblogs.com/xingshansi/p/6777945.html
+      https://www.matplotlib.org.cn/
 ## Matplotlib
 
 ### 3D图绘制：
@@ -282,4 +285,17 @@ KNN和SVM
     plt.legend()
     plt.show()
     
+      最后总结一下，绘制和显示图片常用到的函数有：
+
+      函数名	      功能	                        调用格式
+      figure	创建一个显示窗口	        plt.figure(num=1,figsize=(8,8)
+      imshow	绘制图片	                  plt.imshow(image)
+      show	      显示窗口	                  plt.show()
+      subplot	划分子图	                  plt.subplot(2,2,1)
+      title	      设置子图标题(与subplot结合使用）	plt.title('origin image')
+      axis	      是否显示坐标尺	         plt.axis('off')
+      subplots	创建带有多个子图的窗口	     fig,axes=plt.subplots(2,2,figsize=(8,8))
+      ravel	      为每个子图设置变量	       ax0,ax1,ax2,ax3=axes.ravel()
+      set_title	设置子图标题（与axes结合使用）	ax0.set_title('first window')
+      tight_layout自动调整子图显示布局	      plt.tight_layout()
     
