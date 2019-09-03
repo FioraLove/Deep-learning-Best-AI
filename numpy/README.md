@@ -317,6 +317,8 @@
     创建随机二维数组（或称为矩阵）
     np.random.randint(low= 5,high =10,size=(5,3)) # 生成随机从low到high的整数，数组型为5行3列(也可以生成高维矩阵size=(3,2,5))
     np.random.random((5, 3))  # 5行3列的随机小数
+    np.random.seed(n) # 设置随机算法的初始值
+   
     np.random.uniform(low=1,high=4,size=(10,1)) # 从一个均匀分布[low,high)中随机采样，注意定义域是左闭右开，即包含low，不包含high.
     np.random.rand(2,2) # 随机0-1的数，但参数至少2个，即np.random.rand((2,2))会出现报错
     
