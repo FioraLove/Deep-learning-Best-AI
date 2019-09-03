@@ -298,4 +298,92 @@ TensorFlow神经网络，深度学习
       ravel	      为每个子图设置变量	       ax0,ax1,ax2,ax3=axes.ravel()
       set_title	设置子图标题（与axes结合使用）	ax0.set_title('first window')
       tight_layout自动调整子图显示布局	      plt.tight_layout()
-    
+
+## Numpy
+
+##### numpy.ravel() vs numpy.flatten()的辨异：
+    """
+    首先声明两者所要实现的功能是一致的（将多维数组降位一维），两者的区别在于返回拷贝（copy）还是返回视图（view），
+    numpy.flatten()返回一份拷贝，对拷贝所做的修改不会影响（reflects）原始矩阵，
+    而numpy.ravel()返回的是视图（view，也颇有几分C/C++引用reference的意味），会影响（reflects）原始矩阵
+     ———————————————— 
+     >>> x = np.array([[1, 2], [3, 4]])
+    >>> x
+    array([[1, 2],
+           [3, 4]])
+    >>> x.flatten()
+    array([1, 2, 3, 4])
+    >>> x.ravel()
+    array([1, 2, 3, 4])
+                        两者默认均是行序优先
+    >>> x.flatten('F')
+    array([1, 3, 2, 4])
+    >>> x.ravel('F')
+    array([1, 3, 2, 4])
+
+    >>> x.reshape(-1)
+    array([1, 2, 3, 4])
+    >>> x.T.reshape(-1)
+    array([1, 3, 2, 4])
+
+    2. 两者的区别
+    >>> x = np.array([[1, 2], [3, 4]])
+    >>> x.flatten()[1] = 100
+    >>> x
+    array([[1, 2],
+           [3, 4]])            # flatten：返回的是拷贝
+    >>> x.ravel()[1] = 100
+    >>> x
+    array([[  1, 100],
+           [  3,   4]])
+     ———————————————— 
+    axis参数表示轴，用来定义超过一维数组的属性，二维数据拥有两个轴，
+    matplotlib,pandas, numpy的axis：
+###### axis=1代表行的运算；
+###### axis=0代表列的运算;
+###### 使用0值表示沿着每一列或行标签\索引值向下执行方法 
+###### 使用1值表示沿着每一行或者列标签模向执行对应的方法
+
+    拓：
+    numpy中的axis的设置参数与数组的shape有关 
+    例如一个shape（3，2，4）的数组，代表一个三维数组，要注意的是这里的维度与物理学的维度的理解是不太一样的 
+    axis = 0时，就相当于所求的数组的结果变成shape（2，4） 
+    axis = 1时，数组的结果shape（3，4） 
+    axis = 2时，数组的结果shape（3，2） 
+    这里应该看出来了，当axis=n的时候shape中相应的索引就会被去除，数组发生了降维，那么是如何降维的呢？首先要清楚shape里的数字都代表什么意义： 
+    3代表这个numpy数组里嵌套着3个数组（有三层）， 2代表其中每个数组的行数，3代表其中每个数组的列数。
+    """
+
+
+##### 17-广播Broadcasting规则：
+    1.如果所有输入数组不具有相同数量的维度，则‘1’将被重复地添加到较小数组的形状，直到所有的数组具有相同数量的维度
+    2.确保沿着特定维度具有大小为1的数组表现得好像它们具有沿着该维度具有最大形状的数组的大小
+
+###### 除了通过整数和切片进行索引之外，还可以使用整数数组和布尔数组进行索引
+
+
+##### numpy通用函数
+    """
+    ceil：向上取整 3.6>>4 , 4.1>>5, -3.3>>-3
+    floor:向下取整
+    round：四舍五入
+    trunc（number）:舍去小数点后数字
+    """
+    aa = np.array([.23, 3.14159, 1, 3, 4, -3])
+    print(np.ceil(aa))
+    print(np.floor(aa))
+    print(np.round(aa))
+    print(np.trunc(aa))
+
+##### random随机模块
+
+    创建随机一维数组(N为数组个数)
+    np.random.xxxx(N)
+
+    创建随机二维数组（或称为矩阵）
+    np.random.randint(low= 5,high =10,size=(5,3)) # 生成随机从low到high的整数，数组型为5行3列(也可以生成高维矩阵size=(3,2,5))
+    np.random.random((5, 3))  # 5行3列的随机小数
+    np.random.seed(n) # 设置随机算法的初始值
+   
+    np.random.uniform(low=1,high=4,size=(10,1)) # 从一个均匀分布[low,high)中随机采样，注意定义域是左闭右开，即包含low，不包含high.
+    np.random.rand(2,2) # 随机0-1的数，但参数至少2个，即np.random.rand((2,2))会出现报错
