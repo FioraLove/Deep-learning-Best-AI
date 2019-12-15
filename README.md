@@ -42,6 +42,15 @@ TensorFlow神经网络，深度学习
       https://www.matplotlib.org.cn/
 ## Matplotlib
 
+>解决PYTHON使用MATPLOTLIB绘图时出现的中文乱码问题
+```python
+from matplotlib import pyplot as plt
+
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
+```
+
+
 ### 3D图绘制：
 
 #### 拉弧测试
